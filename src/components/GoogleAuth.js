@@ -33,7 +33,7 @@ class GoogleAuth extends React.Component {
         .getBasicProfile()
         .getImageUrl();
 
-      this.props.signInAction();
+      this.props.signInAction(userId, fullName, imgUrl);
     } else if (qanday === false) {
       this.props.signOutAction();
     }
@@ -56,14 +56,12 @@ class GoogleAuth extends React.Component {
         <div style={{ display: "flex", alignItems: "center" }}>
           <div style={{ display: "flex", alignItems: "center" }}>
             <img
-              style={{ textAlign: "center" }}
+              style={{ textAlign: "center", borderRadius: "50%" }}
               width="30px"
               height="30px"
-              src={this.auth.currentUser.get().getBasicProfile().getImageUrl()}
+              src={this.props.info.imgUrl}
             />
-            <h3 style={{ marginTop: "0px" }}>
-              {this.auth.currentUser.get().getBasicProfile().getName()}
-            </h3>
+            <h3 style={{ marginTop: "0px" }}>{this.props.info.name}</h3>
           </div>
           <button onClick={this.signOutClick} className="ui button google red">
             <i className="google icon" /> Sign out

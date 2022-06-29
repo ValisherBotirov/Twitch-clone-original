@@ -6,9 +6,7 @@ import StreamCreate from "./streams/StreamCreate";
 import StreamDelete from "./streams/StreamDelete";
 import StreamEdit from "./streams/StreamEdit";
 import StreamList from "./streams/StreamList";
-import InfoFormContainer, {
-  InfoContainer,
-} from "../redux/containers/InfoFormContainer";
+import StreamCreateContainer from "../redux/containers/StreamCreateContainer";
 
 const App = () => {
   return (
@@ -19,7 +17,7 @@ const App = () => {
           <Route path="/" exact component={StreamList} />
           <Route path="/streams" exact component={StreamShow} />
           <Route path="/streams/new" exact>
-            <InfoFormContainer />
+            <StreamCreateContainer />
           </Route>
         </div>
       </BrowserRouter>

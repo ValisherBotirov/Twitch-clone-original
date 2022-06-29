@@ -1,11 +1,13 @@
 import { combineReducers } from "redux";
-import { reducer as reduxForm } from "redux-form";
-import { SIGN_IN, SIGN_OUT } from "../actions/action";
+import { reducer } from "redux-form";
+import { FORM_SAVE, SIGN_IN, SIGN_OUT } from "../actions/action";
 
 export const initialStateAuth = {
   kirganmi: null,
   info: { id: null, name: "", imgUrl: "" },
 };
+
+export const initialStateForm = {};
 
 const authReducers = (state = initialStateAuth, action) => {
   if (action.type === SIGN_IN) {
@@ -31,9 +33,16 @@ const authReducers = (state = initialStateAuth, action) => {
   return state;
 };
 
+const formReducer = (state = initialStateForm, action) => {
+  if (action.type === FORM_SAVE) {
+    return { ...state, stream: action.payload };
+  }
+  return state;
+};
+
 const allReducers = combineReducers({
   authReducers,
-  reduxForm,
+  reducer,
 });
 
 export default allReducers;

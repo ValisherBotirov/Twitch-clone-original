@@ -1,31 +1,31 @@
-import React, { useState } from "react";
-import { Field } from "redux-form";
+import React from "react";
+import { Field, formValues } from "redux-form";
 
 class StreamCreate extends React.Component {
-  renderInputText({ input }) {
-    console.log(input);
-    return (
-      <div>
-        <input {...input} name="" type="text" />
-      </div>
-    );
+  nameInput(formValueName) {
+    console.log(formValueName);
+
+    return <input type="text" onChange={formValueName.input.onChange} />;
+  }
+  aboutInput(formValueAbout) {
+    return <input type="text" onChange={formValueAbout.input.onChange} />;
   }
 
-  renderInputSelect() {
-    return (
-      <div>
-        <input type="text" />
-      </div>
-    );
-  }
+  onSubmitForm = (e) => {
+    e.preventDefault();
+    console.log(this.props);
+  };
+
   render() {
     return (
-      <form>
-        <Field name="title" component={this.renderInputText} />
-        <Field name="description" component={this.renderInputSelect} />
+      <form onSubmit={} className="ui form">
+        <label className="field">Name:</label>
+        <Field name="name" component={this.nameInput} />
+        <label className="field">About:</label>
+        <Field name="about" component={this.aboutInput} />
+        <button className="ui button green">Submit</button>
       </form>
     );
   }
 }
-
 export default StreamCreate;

@@ -1,5 +1,6 @@
 export const SIGN_IN = "SIGN_IN";
 export const SIGN_OUT = "SIGN_OUT";
+export const FORM_SAVE = "FORM_SAVE";
 
 const signInAction = (id, name, img) => {
   return {
@@ -18,4 +19,11 @@ const signOutAction = () => {
   };
 };
 
-export { signInAction, signOutAction };
+const formAction = (formValues) => {
+  return {
+    type: FORM_SAVE,
+    payload: formValues,
+  };
+};
+
+export { signInAction, signOutAction, formAction };

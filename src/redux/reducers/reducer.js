@@ -1,5 +1,5 @@
 import { combineReducers } from "redux";
-import { reducer } from "redux-form";
+import { reducer as formReducer } from "redux-form";
 import { FORM_SAVE, SIGN_IN, SIGN_OUT } from "../actions/action";
 
 export const initialStateAuth = {
@@ -33,16 +33,9 @@ const authReducers = (state = initialStateAuth, action) => {
   return state;
 };
 
-const formReducer = (state = initialStateForm, action) => {
-  if (action.type === FORM_SAVE) {
-    return { ...state, stream: action.payload };
-  }
-  return state;
-};
-
 const allReducers = combineReducers({
-  authReducers,
-  reducer,
+  auth: authReducers,
+  form: formReducer,
 });
 
 export default allReducers;

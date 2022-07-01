@@ -3,7 +3,7 @@ import GoogleAuth from "../../components/GoogleAuth";
 import { signInAction, signOutAction } from "../actions/action";
 
 const getMyState = (state) => {
-  return state.authReducers;
+  return state.auth;
 };
 
 const GoogleAuthContainer = connect(getMyState, {

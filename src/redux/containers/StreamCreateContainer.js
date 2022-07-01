@@ -6,8 +6,20 @@ const getMyState = (state) => {
   return state;
 };
 
-const StreamCreateContainer = connect(getMyState)(
-  reduxForm({ form: "streamCreate" })(StreamCreate)
-);
+const validateForm = (values) => {
+  const errors = {};
+  if (!values.name) {
+    errors.name = "Error!!! You must enter name!";
+  }
+  if (!values.about) {
+    errors.about = "Error!! You must enter about";
+  }
+  return errors;
+};
+
+const StreamCreateContainer = reduxForm({
+  form: "streamCreate",
+  validate: validateForm,
+})(StreamCreate);
 
 export default StreamCreateContainer;

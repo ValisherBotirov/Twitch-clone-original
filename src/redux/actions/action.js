@@ -1,6 +1,10 @@
+import axios from "axios";
+import apiServer from "../../apis/api";
+
 export const SIGN_IN = "SIGN_IN";
 export const SIGN_OUT = "SIGN_OUT";
 export const FORM_SAVE = "FORM_SAVE";
+export const REGISTER = "REGISTER";
 
 const signInAction = (id, name, img) => {
   return {
@@ -26,4 +30,12 @@ const formAction = (formValues) => {
   };
 };
 
-export { signInAction, signOutAction, formAction };
+const registerForm = (formValues) => (dispatch, getState) => {
+  const response = axios.post("http://localhost:3001/users", formValues, {});
+  dispatch({
+    type: REGISTER,
+    payload: response,
+  });
+};
+
+export { signInAction, signOutAction, formAction, registerForm };

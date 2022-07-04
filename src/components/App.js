@@ -8,11 +8,13 @@ import StreamEdit from "./streams/StreamEdit";
 import StreamList from "./streams/StreamList";
 import StreamCreateContainer from "../redux/containers/StreamCreateContainer";
 import RegisterContainer from "../redux/containers/RegisterContainer";
+import LoginContainer from "../redux/containers/LoginContainer";
 
 const App = () => {
   return (
     <div>
       <Header />
+
       <BrowserRouter>
         <div>
           <Route path="/" exact component={StreamList} />
@@ -22,6 +24,9 @@ const App = () => {
           </Route>
           <Route path="/register" exact>
             <RegisterContainer />
+          </Route>
+          <Route path="/login" exact>
+            <LoginContainer />
           </Route>
         </div>
       </BrowserRouter>

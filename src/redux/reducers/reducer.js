@@ -1,6 +1,6 @@
 import { combineReducers } from "redux";
 import { reducer as formReducer } from "redux-form";
-import { FORM_SAVE, SIGN_IN, SIGN_OUT } from "../actions/action";
+import { FORM_SAVE, GET_USERS, SIGN_IN, SIGN_OUT } from "../actions/action";
 
 export const initialStateAuth = {
   kirganmi: null,
@@ -33,9 +33,17 @@ const authReducers = (state = initialStateAuth, action) => {
   return state;
 };
 
+const getUsersReducers = (state = [], action) => {
+  if (action.type === GET_USERS) {
+    return action.payload.data;
+  }
+  return state;
+};
+
 const allReducers = combineReducers({
   auth: authReducers,
   form: formReducer,
+  getUsersReducers,
 });
 
 export default allReducers;

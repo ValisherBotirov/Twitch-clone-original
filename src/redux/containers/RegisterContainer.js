@@ -24,10 +24,10 @@ const getMyState = (state) => {
   return state;
 };
 
-const formRegister = reduxForm({ form: "register", validate: tekshir })(
-  Register
-);
+const connectRegister = connect(getMyState, { registerForm })(Register);
 
-const RegisterContainer = connect(getMyState, { registerForm })(formRegister);
+const RegisterContainer = reduxForm({ form: "register", validate: tekshir })(
+  connectRegister
+);
 
 export default RegisterContainer;
